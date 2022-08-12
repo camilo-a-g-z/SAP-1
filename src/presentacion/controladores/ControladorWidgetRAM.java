@@ -29,7 +29,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
 
         // Iterar sobre todos los bits en la posición de memoria actual
         for (int i = 0; i <= 15; i++) {
-            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 15 - i));
+            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 23 - i));
 
             // Compruebar si es el valor MAR, en cuyo caso se necesita un color para resaltar
             if (widgetRAM.isDebeResaltarMAR() && address == widgetRAM.getValorMAR()) {
