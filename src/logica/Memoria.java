@@ -21,7 +21,7 @@ public class Memoria {
     private List<IRAMObserver> observers;
 
     public Memoria(IRegistro MAR) {
-        capacidadMemoria = 16;
+        capacidadMemoria = 0x1000000;
         
         this.data = new byte[capacidadMemoria];
         this.MAR = MAR;

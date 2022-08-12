@@ -54,19 +54,19 @@ public class SistemaSAP implements IClockObserver {
     private List<SAPObserver> observers;
 
     public SistemaSAP() {
-        this.registroA = new Registro8Bit();
-        this.registroB = new Registro8Bit();
-        this.registroSalida = new Registro8Bit();
-        this.registroIR = new Registro8Bit();
-        this.registroMAR = new Registro4Bit();
+        this.registroA = new Registro16Bit();
+        this.registroB = new Registro16Bit();
+        this.registroSalida = new Registro16Bit();
+        this.registroIR = new Registro16Bit();
+        this.registroMAR = new Registro24Bit();
         this.programCounter = new ProgramCounter();
         this.stepCount = 0;
         this.RAM = new Memoria(this.registroMAR);
         this.log = EventLog.getEventLog();
         this.alu = new ALU(this.registroA, this.registroB);
-        this.lineasControl = new boolean[16];
+        this.lineasControl = new boolean[64];
         
-        this.bus = new Registro8Bit();
+        this.bus = new Registro16Bit();
 
         
         // Registrar el modelo como observador de reloj.
@@ -118,7 +118,7 @@ public class SistemaSAP implements IClockObserver {
 
     private void resetTodasLineasControl() {
         // Establecer todas las líneas de control en falso
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 64; i++) {
             this.lineasControl[i] = false;
         }
 
@@ -137,7 +137,7 @@ public class SistemaSAP implements IClockObserver {
         byte instruccion = this.registroIR.getValor();
 
         // Descartar los cuatro bits menos significativos
-        instruccion = (byte) (instruccion & 0b11110000);
+        instruccion = (byte) (instruccion & 0b1111111100000000);
 
         // Analizar el valor
         return decodificarInstruccion(instruccion);
@@ -145,8 +145,8 @@ public class SistemaSAP implements IClockObserver {
 
     // Método auxiliar que analiza un byte y encuentra su tipo de instrucción
     public TipoInstruccion decodificarInstruccion(byte i) {
-        byte instruccion = (byte) (i>>4);
-        instruccion = (byte) (instruccion & 0b00001111);
+        byte instruccion = (byte) (i>>6);
+        instruccion = (byte) (instruccion & 0b0000000011111111);
         //System.out.printf("INS: %x\n", instruccion);
         switch (instruccion) {
             case 0:
@@ -183,7 +183,7 @@ public class SistemaSAP implements IClockObserver {
         String log = "[" + address + "]\t";
 
         // Primero, agregue la instrucción al Log
-        byte instructionVal = (byte) (this.getRAM().getData()[address] & 0b11110000);
+        byte instructionVal = (byte) (this.getRAM().getData()[address] & 0b1111111100000000);
         TipoInstruccion t = decodificarInstruccion(instructionVal);
 
         // Manejar el resultado de la instrucción decodificada
@@ -229,7 +229,7 @@ public class SistemaSAP implements IClockObserver {
         log += " ";
         if (t != TipoInstruccion.NOP && t != TipoInstruccion.INVALID && t != TipoInstruccion.HLT
                 && t != TipoInstruccion.OUT) {
-            log += this.getRAM().getData()[address] & 0b00001111;
+            log += this.getRAM().getData()[address] & 0b0000000011111111;
         }
 
         // Finalmente, agregue el valor decimal
@@ -532,7 +532,7 @@ public class SistemaSAP implements IClockObserver {
             }
             if (this.lineasControl[IO]) {
                 // Coloque 4 bits menos significativos del registro de instrucciones en el bus
-                this.bus.setValor((byte) (0b00001111 & this.registroIR.getValor()));
+                this.bus.setValor((byte) (0b0000000011111111 & this.registroIR.getValor()));
                 this.notificarCambioBUS();
                 EventLog.getEventLog().addEntrada("Valor del Instruction Register en el bus (4 Bits)");
             }
@@ -602,7 +602,7 @@ public class SistemaSAP implements IClockObserver {
 
             }
             if (this.lineasControl[J]) {
-                this.programCounter.setValor((byte) (this.bus.getValor() & 0b1111));
+                this.programCounter.setValor((byte) (this.bus.getValor() & 0b11111111));
                 this.notificarCambioPC();
                 EventLog.getEventLog().addEntrada("Program Counter cambia por la bandera J");
             }
