@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import presentacion.Modelo;
@@ -21,6 +22,7 @@ public class VistaWidgetRAM extends JPanel {
     private VistaPanelCPU view;
     private GridBagConstraints c;
     private JButton[][] btnArrayBotones;
+    private int[][] btnArrayBotones1;
     private JButton btnLimpiarMemoria;
     private JButton btnMostrarOpcodes;
     private JButton btnCargarProgramaDemo;
@@ -64,7 +66,14 @@ public class VistaWidgetRAM extends JPanel {
         this.sistema.getRAM().addRAMObserver(getControl());
 
         // Crea el array de botones que representan cada bit en cada posición de memory
-        btnArrayBotones = new JButton[16777215][16]; // 16 posiciones de 8 bit cada una
+        //btnArrayBotones = new JButton[16777215][16]; // 16 posiciones de 8 bit cada una
+        btnArrayBotones1 = new int[16777215][16]; // 16 posiciones de 8 bit cada una
+        for (int i = 0; i < 16777215; i++) {
+            for (int j = 0; j < 16; j++) {
+                this.btnArrayBotones1[i][j] = getControl().buscarEnRAM(i, 15 - j);
+                //this.btnArrayBotones1[i][j].setPreferredSize(buttonSize);
+            }
+        }
         /*for (int i = 0; i < 16777215; i++) {
             for (int j = 0; j < 16; j++) {
                 this.btnArrayBotones[i][j] = new JButton("" + getControl().buscarEnRAM(i, 7 - j));
@@ -240,4 +249,12 @@ public class VistaWidgetRAM extends JPanel {
         return sistema;
     }
 
+    public int[][] getBtnArrayBotones1() {
+        return btnArrayBotones1;
+    }
+
+    public void setBtnArrayBotones1(int[][] btnArrayBotones1) {
+        this.btnArrayBotones1 = btnArrayBotones1;
+    }
+    
 }
