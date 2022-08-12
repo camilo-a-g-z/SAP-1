@@ -28,8 +28,8 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
     public void cambiaValorRAM(int address) {
 
         // Iterar sobre todos los bits en la posición de memoria actual
-        for (int i = 0; i <= 7; i++) {
-            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 7 - i));
+        for (int i = 0; i <= 15; i++) {
+            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 15 - i));
 
             // Compruebar si es el valor MAR, en cuyo caso se necesita un color para resaltar
             if (widgetRAM.isDebeResaltarMAR() && address == widgetRAM.getValorMAR()) {
@@ -46,8 +46,8 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             }
 
             // Si estamos en la fila inferior, mantener el borde.
-            if (address == 15) {
-                if (i == 7) {
+            if (address == 16777215) {
+                if (i == 15) {
                     widgetRAM.getBtnArrayBotones()[address][i].setBorder(widgetRAM.BOTTOM_RIGHT_BORDER);
                 } else {
                     widgetRAM.getBtnArrayBotones()[address][i].setBorder(widgetRAM.BOTTOM_BORDER);
@@ -204,7 +204,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
         byte address = Byte.parseByte(e.getActionCommand().substring(0, e.getActionCommand().indexOf(",")));
         // Analizar el cambio de  bit en la posición 
         byte bitPos = Byte.parseByte(e.getActionCommand().substring(e.getActionCommand().indexOf(",") + 1));
-        bitPos = (byte) (7 - bitPos);
+        bitPos = (byte) (15 - bitPos);
 
         // Obtener el valor actual del bit agregar la posición modificada
         int currVal = buscarEnRAM(address, bitPos);
@@ -229,7 +229,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
     // Función auxiliar para acceder a bits individuales en la memoria; Address: [0, 15]
     // bitPos: [0, 7]
     public int buscarEnRAM(int address, int bitPos) {
-        int val = 0b11111111 & this.sistema.getRAM().getData()[address];
+        int val = 0b1111111111111111 & this.sistema.getRAM().getData()[address];
         return (val >> bitPos) & 0b1;
     }
 }
