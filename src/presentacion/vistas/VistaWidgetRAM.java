@@ -66,17 +66,17 @@ public class VistaWidgetRAM extends JPanel {
         this.sistema.getRAM().addRAMObserver(getControl());
 
         // Crea el array de botones que representan cada bit en cada posición de memory
-        //btnArrayBotones = new JButton[16777215][16]; // 16 posiciones de 8 bit cada una
-        btnArrayBotones1 = new int[16777215][16]; // 16 posiciones de 8 bit cada una
+        btnArrayBotones = new JButton[64][16]; // 16 posiciones de 8 bit cada una
+        /*btnArrayBotones1 = new int[16777215][16]; // 16 posiciones de 8 bit cada una
         for (int i = 0; i < 16777215; i++) {
             for (int j = 0; j < 16; j++) {
                 this.btnArrayBotones1[i][j] = getControl().buscarEnRAM(i, 15 - j);
                 //this.btnArrayBotones1[i][j].setPreferredSize(buttonSize);
             }
-        }
-        /*for (int i = 0; i < 16777215; i++) {
+        }*/
+        for (int i = 0; i < 64; i++) {
             for (int j = 0; j < 16; j++) {
-                this.btnArrayBotones[i][j] = new JButton("" + getControl().buscarEnRAM(i, 7 - j));
+                this.btnArrayBotones[i][j] = new JButton("" + getControl().buscarEnRAM(i, 15 - j));
                 this.btnArrayBotones[i][j].setPreferredSize(buttonSize);
                 this.btnArrayBotones[i][j].setActionCommand(i + "," + j);
                 this.btnArrayBotones[i][j].addActionListener(getControl());
@@ -84,7 +84,7 @@ public class VistaWidgetRAM extends JPanel {
                 this.btnArrayBotones[i][j].setBackground(btnArrayBotones[i][j].getText().equals("1") ? COLOR_ON : COLOR_OFF);
                 this.btnArrayBotones[i][j].setOpaque(true);
             }
-        }*/
+        }
 
         // size
         this.setPreferredSize(WIDGET_SIZE);
@@ -163,7 +163,7 @@ public class VistaWidgetRAM extends JPanel {
         c.gridx = 4;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        /*for (int i = 1; i <= 16; i++) {
+        for (int i = 1; i <= 64; i++) {
             c.gridx = 1;
             c.gridy = i + 5 + 1;
 
@@ -172,19 +172,19 @@ public class VistaWidgetRAM extends JPanel {
             tmp1.setBorder(FULL_BORDER);
             this.add(tmp1, c);
 
-            for (int j = 2; j < 10; j++) {
+            for (int j = 2; j < 18; j++) {
                 c.gridx = j;
                 this.add(btnArrayBotones[c.gridy - 1 - 5 - 1][j - 2], c);
             }
-        }*/
+        }
 
         // Agregue los bordes derechos a la visualización de RAM
-        /*for (int i = 0; i < this.btnArrayBotones.length; i++) {
+        for (int i = 0; i < this.btnArrayBotones.length; i++) {
             this.btnArrayBotones[i][this.btnArrayBotones[0].length - 1].setBorder(RIGHT_BORDER);
-        }*/
+        }
 
         // Agregue el borde inferior a la visualización de RAM
-        /*for (int i = 0; i < this.btnArrayBotones[0].length; i++) {
+        for (int i = 0; i < this.btnArrayBotones[0].length; i++) {
             // La pieza inferior derecha tiene un borde especial
             if (i == 7) {
                 this.btnArrayBotones[this.btnArrayBotones.length - 1][i]
@@ -195,7 +195,7 @@ public class VistaWidgetRAM extends JPanel {
             }
         }
         getControl().cambioMAR(this.valorMAR);
-        repaint();*/
+        repaint();
     }
 
     public ControladorWidgetRAM getControl() {
