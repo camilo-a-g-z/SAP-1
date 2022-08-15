@@ -38,7 +38,7 @@ public class VistaWidgetRAM extends JPanel {
 
     // Constantes
     private static final Dimension buttonSize = new Dimension(22, 22);
-    private static final Dimension WIDGET_SIZE = new Dimension(220, 550);
+    private static final Dimension WIDGET_SIZE = new Dimension(490, 750);
     public static final Color COLOR_ON = new Color(246, 203, 225);
     public static final Color COLOR_OFF = new Color(246, 213, 203);
     public static final Color COLOR_MAR = Color.gray;
@@ -161,24 +161,22 @@ public class VistaWidgetRAM extends JPanel {
         tmp.setBorder(FULL_BORDER);
         this.add(tmp, c);
 
-        // El contenido de la memoria
+       // El contenido de la memoria
         c.gridx = 4;
         c.gridwidth = 1;
-      
-        
-   c.fill = GridBagConstraints.BOTH;
-        
+        c.fill = GridBagConstraints.BOTH;
         for (int i = 1; i <= 64; i++) {
-            c.gridx = 0;
-            c.gridy = i;
-            
+            c.gridx = 1;
+            c.gridy = i + 5 + 1;
+
             String n = String.format("%6s", Integer.toBinaryString(i - 1)).replace(" ", "0");
             JLabel tmp1 = new JLabel(" [" + n + "] ");
             tmp1.setBorder(FULL_BORDER);
-           
-            for (int j = 2; j < 18; j++) {
+            this.add(tmp1, c);
+
+        for (int j = 2; j < 18; j++) {  
                 c.gridx = j;
-                this.add(btnArrayBotones[c.gridy - 1][j - 2], c);
+                this.add(btnArrayBotones[c.gridy - 1 - 5 - 1][j - 2], c);
             }
         }
 
