@@ -101,11 +101,11 @@ public class ControladorWindgetSAP implements SAPObserver{
     @Override
     public void cambioLineasControl() {
         boolean[] newLines = this.sistema.getControlLines();
-        for (int i = 0; i < newLines.length; i++) {
+        for (int i = 0; i < 16; i++) {
             if (newLines[i]) {
                 widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_SELECTED_BG);
             } else {
-                //widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_UNSELECTED_BG);
+                widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_UNSELECTED_BG);
             }
         }
     }

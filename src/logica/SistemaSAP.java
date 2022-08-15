@@ -25,6 +25,7 @@ public class SistemaSAP implements IClockObserver {
     public static final int CO = 13;
     public static final int J = 14;
     public static final int FI = 15;
+    public static final int INP = 16;
 
     // Enumera los tipos de registros válidos en SAP-1
     public enum TipoRegistro {
@@ -33,7 +34,7 @@ public class SistemaSAP implements IClockObserver {
 
     // Enumera los tipos de instrucciones válidas admitidas en el simulador
     public enum TipoInstruccion {
-        NOP, LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT, INVALID
+        NOP, LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT, INVALID, INP
     }
 
     // Contenido del SAP-1
@@ -171,6 +172,8 @@ public class SistemaSAP implements IClockObserver {
                 return TipoInstruccion.OUT;
             case 15:
                 return TipoInstruccion.HLT;
+            case 16:
+                return TipoInstruccion.INP;
             default:
                 // Las instrucciones 0b1001, 0b1010, 0b1011, 0b1100, 0b1101 (9-13) no están implementadas
                 return TipoInstruccion.INVALID;
@@ -221,6 +224,8 @@ public class SistemaSAP implements IClockObserver {
             case HLT:
                 log += "HLT";
                 break;
+            case INP:
+                log += "INP";
             default:
                 log += "N/A";
         }
@@ -334,6 +339,7 @@ public class SistemaSAP implements IClockObserver {
                             EventLog.getEventLog().addEntrada("ADD => ∑O, FI, AI activadas");
                         }
                     }
+                    
                     if (instruccionActual == TipoInstruccion.SUB) {
                         if (this.stepCount == 3) {
                             this.resetTodasLineasControl();
@@ -359,6 +365,7 @@ public class SistemaSAP implements IClockObserver {
                             EventLog.getEventLog().addEntrada("SUB => ∑O, SU, AI, FI activadas");
                         }
                     }
+                    
                     if (instruccionActual == TipoInstruccion.STA) {
                         if (this.stepCount == 3) {
                             this.resetTodasLineasControl();
