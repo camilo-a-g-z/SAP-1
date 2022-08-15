@@ -167,13 +167,13 @@ public class VistaWidgetRAM extends JPanel {
         this.panelMemoria = new JScrollPane();
         this.panelMemoria.setBorder(FULL_BORDER);
         this.panelMemoria.setPreferredSize(WIDGET_SIZE);
-        this.panelMemoria.setSize(20,40);
+        this.panelMemoria.setSize(20,64);
         this.add(this.panelMemoria,c);
         
-   c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.BOTH;
         
         for (int i = 1; i <= 64; i++) {
-            c.gridx = 0;
+            c.gridx = 2;
             c.gridy = i;
             
             String n = String.format("%6s", Integer.toBinaryString(i - 1)).replace(" ", "0");
