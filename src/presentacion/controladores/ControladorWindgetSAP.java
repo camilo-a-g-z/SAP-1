@@ -52,7 +52,7 @@ public class ControladorWindgetSAP implements SAPObserver{
     @Override
     public void cambioMAR(byte v) {
         for (int i = 0; i <= 6; i++) {
-            widgetSAP.getBtns_bitsMAR()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.MAR, 5 - i));
+            widgetSAP.getBtns_bitsMAR()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.MAR, 6 - i));
         }
         widgetSAP.getRamWidget().getControl().cambioMAR(v);
     }
