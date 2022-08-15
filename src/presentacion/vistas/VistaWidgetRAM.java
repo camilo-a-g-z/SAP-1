@@ -39,6 +39,7 @@ public class VistaWidgetRAM extends JPanel {
     // Constantes
     private static final Dimension buttonSize = new Dimension(22, 22);
     private static final Dimension WIDGET_SIZE = new Dimension(490, 750);
+
     public static final Color COLOR_ON = new Color(246, 203, 225);
     public static final Color COLOR_OFF = new Color(246, 213, 203);
     public static final Color COLOR_MAR = Color.gray;

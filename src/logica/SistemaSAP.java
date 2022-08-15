@@ -26,6 +26,7 @@ public class SistemaSAP implements IClockObserver {
     public static final int J = 14;
     public static final int FI = 15;
     public static final int INP = 16;
+    public static final int OTP = 16;
 
     // Enumera los tipos de registros válidos en SAP-1
     public enum TipoRegistro {
@@ -34,7 +35,7 @@ public class SistemaSAP implements IClockObserver {
 
     // Enumera los tipos de instrucciones válidas admitidas en el simulador
     public enum TipoInstruccion {
-        NOP, LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT, INVALID, INP
+        NOP, LDA, ADD, SUB, STA, LDI, JMP, JC, JZ, OUT, HLT, INVALID, INP, OTP
     }
 
     // Contenido del SAP-1
@@ -174,6 +175,8 @@ public class SistemaSAP implements IClockObserver {
                 return TipoInstruccion.HLT;
             case 16:
                 return TipoInstruccion.INP;
+            case 17:
+                return TipoInstruccion.OTP;
             default:
                 // Las instrucciones 0b1001, 0b1010, 0b1011, 0b1100, 0b1101 (9-13) no están implementadas
                 return TipoInstruccion.INVALID;
@@ -226,6 +229,8 @@ public class SistemaSAP implements IClockObserver {
                 break;
             case INP:
                 log += "INP";
+            case OTP:
+                log += "OTP";
             default:
                 log += "N/A";
         }
@@ -315,6 +320,44 @@ public class SistemaSAP implements IClockObserver {
                             EventLog.getEventLog().addEntrada("LDA => No hace nada");
                         }
                     }
+                    if (instruccionActual == TipoInstruccion.INP) {
+                        if (this.stepCount == 3) {
+                            this.resetTodasLineasControl();
+                            this.lineasControl[IO] = true;
+                            this.lineasControl[MI] = true;
+                            notificarCambioLineasControl();
+                            EventLog.getEventLog().addEntrada("INP => IO, MI activadas");
+                        }
+                        if (this.stepCount == 4) {
+                            this.resetTodasLineasControl();
+                            this.lineasControl[INP] = true;
+                            notificarCambioLineasControl();
+                            EventLog.getEventLog().addEntrada("INP => RO, AI activadas");
+                        }
+                        if (this.stepCount == 5) {
+                             this.lineasControl[INP] = true;
+                            EventLog.getEventLog().addEntrada("INP => No hace nada");
+                        }
+                    }
+                    if (instruccionActual == TipoInstruccion.OTP) {
+                        if (this.stepCount == 3) {
+                            this.resetTodasLineasControl();
+                            this.lineasControl[IO] = true;
+                            this.lineasControl[MI] = true;
+                            notificarCambioLineasControl();
+                            EventLog.getEventLog().addEntrada("OTP => IO, MI activadas");
+                        }
+                        if (this.stepCount == 4) {
+                            this.resetTodasLineasControl();
+                            this.lineasControl[OTP] = true;
+                            notificarCambioLineasControl();
+                            EventLog.getEventLog().addEntrada("OTP => RO, AI activadas");
+                        }
+                        if (this.stepCount == 5) {
+                             this.lineasControl[OTP] = true;
+                            EventLog.getEventLog().addEntrada("OTP => No hace nada");
+                        }
+                    }
                     if (instruccionActual == TipoInstruccion.ADD) {
                         if (this.stepCount == 3) {
                             this.resetTodasLineasControl();
@@ -380,7 +423,6 @@ public class SistemaSAP implements IClockObserver {
                             this.lineasControl[RI] = true;
                             notificarCambioLineasControl();
                             EventLog.getEventLog().addEntrada("STA => AO, RI activadas");
-
                         }
                         if (this.stepCount == 5) {
                             this.resetTodasLineasControl();
@@ -529,7 +571,7 @@ public class SistemaSAP implements IClockObserver {
             // no dependen del reloj.
             if (this.lineasControl[CO]) {
                 this.bus.setValor(this.programCounter.getValor());
-                EventLog.getEventLog().addEntrada("Valor del Program Counter en el bus (4 bits)");
+                EventLog.getEventLog().addEntrada("Valor del Program Counter en el bus (8 bits)");
                 this.notificarCambioBUS();
             }
             if (this.lineasControl[RO]) {
@@ -541,7 +583,7 @@ public class SistemaSAP implements IClockObserver {
                 // Coloque 4 bits menos significativos del registro de instrucciones en el bus
                 this.bus.setValor((byte) (0b0000000011111111 & this.registroIR.getValor()));
                 this.notificarCambioBUS();
-                EventLog.getEventLog().addEntrada("Valor del Instruction Register en el bus (4 Bits)");
+                EventLog.getEventLog().addEntrada("Valor del Instruction Register en el bus (8 Bits)");
             }
             if (this.lineasControl[AO]) {
                 this.bus.setValor(this.registroA.getValor());
