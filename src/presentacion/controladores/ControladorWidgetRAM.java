@@ -134,18 +134,18 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             // Obtener el contenido de la memoria
             byte[] arr = this.sistema.getRAM().getData();
 
-            for (int i = 0; i < 16777215; i++) {
+            for (int i = 0; i < 64; i++) {
                 // Colocamos cada posición en 0
                 arr[i] = 0;
             }
 
             // Obligar a la pantalla a volver a pintar dos veces, para manejar el retraso visual
-            for (int i = 0; i < 16777215; i++) {
+            for (int i = 0; i < 64; i++) {
                 this.cambiaValorRAM(i);
             }
-            /*for (int i = 0; i < 16777215; i++) {
+            for (int i = 0; i < 64; i++) {
                 this.cambiaValorRAM(i);
-            }*/
+            }
             return;
         }
 
@@ -173,7 +173,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             byte[] arr = this.sistema.getRAM().getData();
 
             // Primero borramos la memoria
-            for (int i = 0; i < 16777215; i++) {
+            for (int i = 0; i < 64; i++) {
                 // Coloca en cada posición 0
                 arr[i] = 0;
                 // La pantalla vuelve a pintar
