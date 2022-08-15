@@ -58,7 +58,7 @@ public class SistemaSAP implements IClockObserver {
         this.registroB = new Registro16Bit();
         this.registroSalida = new Registro16Bit();
         this.registroIR = new Registro16Bit();
-        this.registroMAR = new Registro24Bit();
+        this.registroMAR = new Registro6Bit();
         this.programCounter = new ProgramCounter();
         this.stepCount = 0;
         this.RAM = new Memoria(this.registroMAR);
