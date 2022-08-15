@@ -96,85 +96,85 @@ public class VistaWidgetRAM extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
 
         // Botón borrar RAM 
-        c.gridx = 1;
-        c.gridy = 0;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 38;
+        c.gridwidth = 7;
         this.btnLimpiarMemoria = new JButton("Borrar memoria");
         this.btnLimpiarMemoria.setActionCommand("clearmem");
         this.btnLimpiarMemoria.addActionListener(getControl());
         this.add(this.btnLimpiarMemoria, c);
 
         // Botón OPCodes 
-        c.gridx = 1;
-        c.gridy = 1;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 40;
+        c.gridwidth = 7;
         this.btnMostrarOpcodes = new JButton("Mostrar Códigos de Operación");
         this.btnMostrarOpcodes.setActionCommand("showopcodes");
         this.btnMostrarOpcodes.addActionListener(getControl());
         this.add(this.btnMostrarOpcodes, c);
 
         // Botón carga programa demo
-        c.gridx = 1;
-        c.gridy = 2;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 42;
+        c.gridwidth = 7;
         this.btnCargarProgramaDemo = new JButton("Cargar Programa demo");
         this.btnCargarProgramaDemo.setActionCommand("loadcountprogram");
         this.btnCargarProgramaDemo.addActionListener(getControl());
         this.add(this.btnCargarProgramaDemo, c);
 
         // Botón analizar programa 
-        c.gridx = 1;
-        c.gridy = 3;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 46;
+        c.gridwidth = 7;
         this.btnAnalizarPrograma = new JButton("Analizar Programa");
         this.btnAnalizarPrograma.setActionCommand("analyzeProgram");
         this.btnAnalizarPrograma.addActionListener(getControl());
         this.add(this.btnAnalizarPrograma, c);
 
         // Botón assembler 
-        c.gridx = 1;
-        c.gridy = 4;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 36;
+        c.gridwidth = 7;
         this.btnAssembler = new JButton("Assembler");
         this.btnAssembler.setActionCommand("openAssembler");
         this.btnAssembler.addActionListener(getControl());
         this.add(this.btnAssembler, c);
 
         // Botón resaltar posición de memoria respecto al MAR 
-        c.gridx = 1;
-        c.gridy = 5;
-        c.gridwidth = 9;
+        c.gridx = 24;
+        c.gridy = 38;
+        c.gridwidth = 7;
         this.btnResaltarMAR = new JButton(this.debeResaltarMAR ? MAR_ON_LABEL : MAR_OFF_LABEL);
         this.btnResaltarMAR.setActionCommand("toggleMAR");
         this.btnResaltarMAR.addActionListener(getControl());
         this.add(this.btnResaltarMAR, c);
 
         // Contenido RAM 
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridheight = 1;
         c.gridwidth = 9;
-        c.gridy = 6;
+        c.gridy = 0;
         JLabel tmp = new JLabel("Contenido de Memoria");
         tmp.setHorizontalAlignment(SwingConstants.CENTER);
         tmp.setBorder(FULL_BORDER);
         this.add(tmp, c);
 
         // El contenido de la memoria
-        c.gridx = 4;
+        c.gridx = 0;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
         for (int i = 1; i <= 64; i++) {
-            c.gridx = 1;
-            c.gridy = i + 5 + 1;
-
-            String n = String.format("%4s", Integer.toBinaryString(i - 1)).replace(" ", "0");
+            c.gridx = 0;
+            c.gridy = i;
+            
+            String n = String.format("%6s", Integer.toBinaryString(i - 1)).replace(" ", "0");
             JLabel tmp1 = new JLabel(" [" + n + "] ");
             tmp1.setBorder(FULL_BORDER);
             this.add(tmp1, c);
 
             for (int j = 2; j < 18; j++) {
                 c.gridx = j;
-                this.add(btnArrayBotones[c.gridy - 1 - 5 - 1][j - 2], c);
+                this.add(btnArrayBotones[c.gridy - 1][j - 2], c);
             }
         }
 
