@@ -218,8 +218,8 @@ public class VistaWidgetSAP extends JPanel{
         //  BUS 
         c.gridy = 0;
         c.gridx = 1;
-        btns_bistBUS = new JLabel[8];
-        for (int i = 0; i <= 7; i++) {
+        btns_bistBUS = new JLabel[17];
+        for (int i = 0; i <= 16; i++) {
             c.gridx = i + 1;
             JLabel b = crearLabel("0"); 
             this.add(b, c);
@@ -262,8 +262,8 @@ public class VistaWidgetSAP extends JPanel{
         //  IR 
         c.gridy = 8;
         c.gridx = 1;
-        btns_bitsIR = new JLabel[8];
-        for (int i = 0; i <= 7; i++) {
+        btns_bitsIR = new JLabel[16];
+        for (int i = 0; i <= 15; i++) {
             c.gridx = i + 1;
             JLabel b = crearLabel("0"); 
             this.add(b, c);
@@ -284,8 +284,8 @@ public class VistaWidgetSAP extends JPanel{
         //  PC
         c.gridy = 10;
         c.gridx = 1;
-        btns_bitsPC = new JLabel[4];
-        for (int i = 0; i <= 3; i++) {
+        btns_bitsPC = new JLabel[6];
+        for (int i = 0; i <= 5; i++) {
             c.gridx = i + 1;
             JLabel b = crearLabel("0"); 
             this.add(b, c);
@@ -295,8 +295,8 @@ public class VistaWidgetSAP extends JPanel{
         //  MAR
         c.gridy = 14;
         c.gridx = 1;
-        btns_bitsMAR = new JLabel[4];
-        for (int i = 0; i <= 3; i++) {
+        btns_bitsMAR = new JLabel[7];
+        for (int i = 0; i <= 6; i++) {
             c.gridx = i + 1;
             JLabel b = crearLabel("0"); 
             this.add(b, c);
