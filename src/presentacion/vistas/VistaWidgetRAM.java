@@ -10,7 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import presentacion.Modelo;
@@ -30,6 +30,7 @@ public class VistaWidgetRAM extends JPanel {
     private JButton btnAssembler;
     private JButton btnResaltarMAR;
     private JPanel parentPanel;
+    private JScrollPane panelMemoria;
     private byte valorMAR;
     private boolean debeResaltarMAR;
 
@@ -64,6 +65,7 @@ public class VistaWidgetRAM extends JPanel {
 
         // Agregar manejador del observador 
         this.sistema.getRAM().addRAMObserver(getControl());
+        
 
         // Crea el array de botones que representan cada bit en cada posición de memory
         btnArrayBotones = new JButton[64][16]; // 16 posiciones de 8 bit cada una
@@ -160,9 +162,17 @@ public class VistaWidgetRAM extends JPanel {
         this.add(tmp, c);
 
         // El contenido de la memoria
+       
         c.gridx = 4;
         c.gridwidth = 1;
-        c.fill = GridBagConstraints.BOTH;
+        this.panelMemoria = new JScrollPane();
+        this.panelMemoria.setBorder(FULL_BORDER);
+        this.panelMemoria.setPreferredSize(WIDGET_SIZE);
+        this.panelMemoria.setSize(20,40);
+        this.add(this.panelMemoria,c);
+        
+   c.fill = GridBagConstraints.BOTH;
+        
         for (int i = 1; i <= 64; i++) {
             c.gridx = 1;
             c.gridy = i + 5 + 1;
@@ -170,8 +180,7 @@ public class VistaWidgetRAM extends JPanel {
             String n = String.format("%4s", Integer.toBinaryString(i - 1)).replace(" ", "0");
             JLabel tmp1 = new JLabel(" [" + n + "] ");
             tmp1.setBorder(FULL_BORDER);
-            this.add(tmp1, c);
-
+            panelMemoria.add(tmp1);
             for (int j = 2; j < 18; j++) {
                 c.gridx = j;
                 this.add(btnArrayBotones[c.gridy - 1 - 5 - 1][j - 2], c);
@@ -195,6 +204,7 @@ public class VistaWidgetRAM extends JPanel {
             }
         }
         getControl().cambioMAR(this.valorMAR);
+        
         repaint();
     }
 
@@ -256,5 +266,6 @@ public class VistaWidgetRAM extends JPanel {
     public void setBtnArrayBotones1(int[][] btnArrayBotones1) {
         this.btnArrayBotones1 = btnArrayBotones1;
     }
+    
     
 }
