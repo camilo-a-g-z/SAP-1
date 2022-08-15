@@ -163,7 +163,7 @@ public class VistaWidgetRAM extends JPanel {
         this.add(tmp, c);
 
        // El contenido de la memoria
-        c.gridx = 4;
+        c.gridx = 0;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
         for (int i = 1; i <= 64; i++) {
