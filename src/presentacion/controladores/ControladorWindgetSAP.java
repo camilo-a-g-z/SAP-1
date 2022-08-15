@@ -44,15 +44,15 @@ public class ControladorWindgetSAP implements SAPObserver{
 
     @Override
     public void cambioPC(byte v) {
-        for (int i = 0; i <= 23; i++) {
-            widgetSAP.getBtns_bitsPC()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.PC, 23 - i));
+        for (int i = 0; i <= 5; i++) {
+            widgetSAP.getBtns_bitsPC()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.PC, 5 - i));
         }
     }
 
     @Override
     public void cambioMAR(byte v) {
-        for (int i = 0; i <= 15; i++) {
-            widgetSAP.getBtns_bitsMAR()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.MAR, 15 - i));
+        for (int i = 0; i <= 6; i++) {
+            widgetSAP.getBtns_bitsMAR()[i].setText(sistema.decodificarRegistro(SistemaSAP.TipoRegistro.MAR, 5 - i));
         }
         widgetSAP.getRamWidget().getControl().cambioMAR(v);
     }
@@ -103,7 +103,7 @@ public class ControladorWindgetSAP implements SAPObserver{
         boolean[] newLines = this.sistema.getControlLines();
         for (int i = 0; i < newLines.length; i++) {
             if (newLines[i]) {
-                //widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_SELECTED_BG);
+                widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_SELECTED_BG);
             } else {
                 //widgetSAP.getBtns_bitsControl()[i].setBackground(widgetSAP.BUTTON_UNSELECTED_BG);
             }

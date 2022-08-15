@@ -29,7 +29,8 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
 
         // Iterar sobre todos los bits en la posición de memoria actual
         for (int i = 0; i <= 15; i++) {
-            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 23 - i));
+            System.out.println("Vamos en el  " + i);
+            widgetRAM.getBtnArrayBotones()[address][i].setText("" + this.buscarEnRAM(address, 15 - i));
 
             // Compruebar si es el valor MAR, en cuyo caso se necesita un color para resaltar
             if (widgetRAM.isDebeResaltarMAR() && address == widgetRAM.getValorMAR()) {
@@ -46,7 +47,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             }
 
             // Si estamos en la fila inferior, mantener el borde.
-            if (address == 16777215) {
+            if (address == 64) {
                 if (i == 15) {
                     widgetRAM.getBtnArrayBotones()[address][i].setBorder(widgetRAM.BOTTOM_RIGHT_BORDER);
                 } else {
@@ -133,18 +134,18 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             // Obtener el contenido de la memoria
             byte[] arr = this.sistema.getRAM().getData();
 
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < 16777215; i++) {
                 // Colocamos cada posición en 0
                 arr[i] = 0;
             }
 
             // Obligar a la pantalla a volver a pintar dos veces, para manejar el retraso visual
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < 16777215; i++) {
                 this.cambiaValorRAM(i);
             }
-            for (int i = 0; i < 16; i++) {
+            /*for (int i = 0; i < 16777215; i++) {
                 this.cambiaValorRAM(i);
-            }
+            }*/
             return;
         }
 
