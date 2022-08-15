@@ -40,7 +40,7 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
             }
 
             // Si estamos en la posición más a la derecha, mantenga el borde
-            if (i == 7) {
+            if (i == 15) {
                 widgetRAM.getBtnArrayBotones()[address][i].setBorder(widgetRAM.RIGHT_BORDER);
             } else {
                 widgetRAM.getBtnArrayBotones()[address][i].setBorder(null);
