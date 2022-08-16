@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/vistas/VistaWidgetRAM.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/Modelo.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/controladores/ControladorWindgetSAP.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/vistas/VistaWidgetSAP.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/controladores/ControlPanelCPU.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/logica/ProgramCounter.java</file>
-            <file>file:/C:/Users/migue/OneDrive/Escritorio/Arquitectura/SAP-1/src/presentacion/controladores/ControladorWidgetRAM.java</file>
+            <file>file:/C:/Users/lain-/Documents/GitHub/SAP-1/src/presentacion/vistas/VistaDisplaySieteSeg.java</file>
+            <file>file:/C:/Users/lain-/Documents/GitHub/SAP-1/src/presentacion/vistas/VistaWidgetRAM.java</file>
+            <file>file:/C:/Users/lain-/Documents/GitHub/SAP-1/src/presentacion/vistas/VistaPanelCPU.java</file>
+            <file>file:/C:/Users/lain-/Documents/GitHub/SAP-1/src/presentacion/vistas/VistaWidgetSAP.java</file>
         </group>
     </open-files>
 </project-private>

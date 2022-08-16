@@ -40,9 +40,9 @@ public class VistaWidgetRAM extends JPanel {
     private static final Dimension buttonSize = new Dimension(22, 22);
     private static final Dimension WIDGET_SIZE = new Dimension(490, 750);
 
-    public static final Color COLOR_ON = new Color(246, 203, 225);
-    public static final Color COLOR_OFF = new Color(246, 213, 203);
-    public static final Color COLOR_MAR = Color.gray;
+    public static final Color COLOR_ON = new Color(215, 204, 228);
+    public static final Color COLOR_OFF = new Color(139, 117, 183);
+    public static final Color COLOR_MAR = Color.white;
     public static final Border BOTTOM_BORDER = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
     public static final Border RIGHT_BORDER = BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK);
     public static final Border BOTTOM_RIGHT_BORDER = BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK);
