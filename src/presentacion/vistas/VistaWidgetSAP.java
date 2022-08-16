@@ -55,9 +55,9 @@ public class VistaWidgetSAP extends JPanel{
     public static final Dimension BUTTON_SIZE = new Dimension(22, 22);
     public static final Dimension WIDGET_SIZE = new Dimension(625, 500);
     public static final Color BUTTON_UNSELECTED_BG = new Color(238, 238, 238);
-    public static final Color BUTTON_SELECTED_BG = new Color(255, 85, 85);
-    public static final Color COLOR_BACKGROUND = new Color(203, 246, 245);
-    public static final Color WIDGET_BORDER_COLOR = Color.BLACK;
+    public static final Color BUTTON_SELECTED_BG = new Color(113, 76, 201);
+    public static final Color COLOR_BACKGROUND = new Color(224, 224, 224);
+    public static final Color WIDGET_BORDER_COLOR = Color.black;
     
     private final Modelo modelo;    
 
