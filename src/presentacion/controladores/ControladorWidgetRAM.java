@@ -152,17 +152,19 @@ public class ControladorWidgetRAM implements interfaces.IRAMObserver, ActionList
         // Si el usuario hace clic en el botón Mostrar los códigos de operación
         if (e.getActionCommand().contentEquals("showopcodes")) {
             EventLog.getEventLog().addEntrada("=============");
-            EventLog.getEventLog().addEntrada("NOP\t0000");
-            EventLog.getEventLog().addEntrada("LDA\t0001");
-            EventLog.getEventLog().addEntrada("ADD\t0010");
-            EventLog.getEventLog().addEntrada("SUB\t0011");
-            EventLog.getEventLog().addEntrada("STA\t0100");
-            EventLog.getEventLog().addEntrada("LDI\t0101");
-            EventLog.getEventLog().addEntrada("JMP\t0110");
-            EventLog.getEventLog().addEntrada("JC\t0111");
-            EventLog.getEventLog().addEntrada("JZ\t1000");
-            EventLog.getEventLog().addEntrada("OUT\t1110");
-            EventLog.getEventLog().addEntrada("HLT\t1111");
+            EventLog.getEventLog().addEntrada("NOP\t000000");
+            EventLog.getEventLog().addEntrada("LDA\t000001");
+            EventLog.getEventLog().addEntrada("ADD\t000010");
+            EventLog.getEventLog().addEntrada("SUB\t000011");
+            EventLog.getEventLog().addEntrada("STA\t000100");
+            EventLog.getEventLog().addEntrada("LDI\t000101");
+            EventLog.getEventLog().addEntrada("JMP\t000110");
+            EventLog.getEventLog().addEntrada("JC\t000111");
+            EventLog.getEventLog().addEntrada("JZ\t001000");
+            EventLog.getEventLog().addEntrada("OUT\t001110");
+            EventLog.getEventLog().addEntrada("HLT\t001111");
+            EventLog.getEventLog().addEntrada("INP\t010000");
+            EventLog.getEventLog().addEntrada("OTP\t010001");
             EventLog.getEventLog().addEntrada("=============");
             return;
         }
