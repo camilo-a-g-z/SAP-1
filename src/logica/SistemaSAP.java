@@ -26,7 +26,7 @@ public class SistemaSAP implements IClockObserver {
     public static final int J = 14;
     public static final int FI = 15;
     public static final int INP = 16;
-    public static final int OTP = 16;
+    public static final int OTP = 17;
 
     // Enumera los tipos de registros válidos en SAP-1
     public enum TipoRegistro {

@@ -15,6 +15,10 @@ public class Registro16Bit implements IRegistro{
     
     @Override
     public void setValor(byte v) {
+        // Asegúrese de que la entrada sea de 4 bits
+        if (v > 0b1111111111111111) {
+            throw new RuntimeException();
+        }
         this.valor = v;
     }
 
