@@ -107,8 +107,8 @@ public class VistaWidgetRAM extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
 
         // Botón borrar RAM 
-        c.gridx = 24;
-        c.gridy = 38;
+        c.gridx = 1;
+        c.gridy = 0;
         c.gridwidth = 7;
         this.btnLimpiarMemoria = new JButton("Borrar memoria");
         this.btnLimpiarMemoria.setActionCommand("clearmem");
@@ -116,8 +116,8 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnLimpiarMemoria, c);
 
         // Botón OPCodes 
-        c.gridx = 24;
-        c.gridy = 40;
+        c.gridx = 1;
+        c.gridy = 1;
         c.gridwidth = 7;
         this.btnMostrarOpcodes = new JButton("Mostrar Códigos de Operación");
         this.btnMostrarOpcodes.setActionCommand("showopcodes");
@@ -125,8 +125,8 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnMostrarOpcodes, c);
 
         // Botón carga programa demo
-        c.gridx = 24;
-        c.gridy = 42;
+        c.gridx = 1;
+        c.gridy = 2;
         c.gridwidth = 7;
         this.btnCargarProgramaDemo = new JButton("Cargar Programa demo");
         this.btnCargarProgramaDemo.setActionCommand("loadcountprogram");
@@ -134,8 +134,8 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnCargarProgramaDemo, c);
 
         // Botón analizar programa 
-        c.gridx = 24;
-        c.gridy = 46;
+        c.gridx = 1;
+        c.gridy = 3;
         c.gridwidth = 7;
         this.btnAnalizarPrograma = new JButton("Analizar Programa");
         this.btnAnalizarPrograma.setActionCommand("analyzeProgram");
@@ -143,8 +143,8 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnAnalizarPrograma, c);
 
         // Botón assembler 
-        c.gridx = 24;
-        c.gridy = 36;
+        c.gridx = 1;
+        c.gridy = 4;
         c.gridwidth = 7;
         this.btnAssembler = new JButton("Assembler");
         this.btnAssembler.setActionCommand("openAssembler");
@@ -152,8 +152,8 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnAssembler, c);
 
         // Botón resaltar posición de memoria respecto al MAR 
-        c.gridx = 24;
-        c.gridy = 38;
+        c.gridx = 1;
+        c.gridy = 5;
         c.gridwidth = 7;
         this.btnResaltarMAR = new JButton(this.debeResaltarMAR ? MAR_ON_LABEL : MAR_OFF_LABEL);
         this.btnResaltarMAR.setActionCommand("toggleMAR");
@@ -161,10 +161,10 @@ public class VistaWidgetRAM extends JPanel {
         this.add(this.btnResaltarMAR, c);
 
         // Contenido RAM 
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridheight = 1;
         c.gridwidth = 9;
-        c.gridy = 0;
+        c.gridy = 6;
         JLabel tmp = new JLabel("Contenido de Memoria");
         tmp.setHorizontalAlignment(SwingConstants.CENTER);
         tmp.setBorder(FULL_BORDER);
