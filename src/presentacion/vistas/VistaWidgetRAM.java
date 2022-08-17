@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import presentacion.Modelo;
@@ -60,6 +61,13 @@ public class VistaWidgetRAM extends JPanel {
 
         this.valorMAR = 0;
         this.parentPanel = parentPanel;
+        
+        
+        
+        panelMemoria= new JScrollPane(this, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panelMemoria.setPreferredSize(new Dimension(640, 400));
+        
+        
 
         this.view = (VistaPanelCPU) parentPanel;
         this.debeResaltarMAR = true;
@@ -90,7 +98,7 @@ public class VistaWidgetRAM extends JPanel {
         }
 
         // size
-        this.setPreferredSize(WIDGET_SIZE);
+        
         this.setBackground(VistaPanelCPU.VIEW_BACKGROUND_COLOR);
 
         // Layout
@@ -259,6 +267,9 @@ public class VistaWidgetRAM extends JPanel {
 
     public void setBtnArrayBotones1(int[][] btnArrayBotones1) {
         this.btnArrayBotones1 = btnArrayBotones1;
+    }
+    public JScrollPane getScrollPanel(){
+        return panelMemoria;
     }
     
     
