@@ -8,7 +8,7 @@ import interfaces.IRegistro;
  */
 public class RegistroPunteroI implements IRegistro{
 
-    private byte valor;
+    private int valor;
 
     public RegistroPunteroI() {
         this.valor = 0;
@@ -16,12 +16,12 @@ public class RegistroPunteroI implements IRegistro{
     
     
     @Override
-    public void setValor(byte v) {
+    public void setValor(int v) {
         this.valor = v;
     }
 
     @Override
-    public byte getValor() {
+    public int getValor() {
         return this.valor;
     }
 

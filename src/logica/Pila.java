@@ -6,29 +6,29 @@ package logica;
  */
 public class Pila {
     private int capacidadPila;
-    private byte[] data;
+    private int[] data;
     private RegistroPunteroI punteroInicio; //guarda referecia direccion en memoria de primera posicion.
     private RegistroPunteroF punteroFinal; //guarda referecia direccion en memoria de primera posicion.
     
     public Pila() {
         capacidadPila = 0x400;
-        this.data = new byte[capacidadPila];
-        this.punteroInicio.setValor((byte) 0x400);
-        this.punteroFinal.setValor((byte) 0x400);
+        this.data = new int[capacidadPila];
+        this.punteroInicio.setValor((int) 0x400);
+        this.punteroFinal.setValor((int) 0x400);
     }
     
-    public byte getValorPila(){
+    public int getValorPila(){
         return this.data[punteroInicio.getValor()];
     }
     public void siguientePosicionPila(){
         //si no esta vacio o si esta por detras del puntero final
         if(this.data[punteroInicio.getValor() - 1] != 0  || punteroInicio.getValor() <= punteroFinal.getValor()){ 
-            punteroInicio.setValor( (byte) (punteroInicio.getValor() - 1));
+            punteroInicio.setValor( (int) (punteroInicio.getValor() - 1));
         }
     }
-    public void addElementInPila(byte val){
+    public void addElementInPila(int val){
         if(punteroFinal.getValor() != 0){
-            punteroFinal.setValor( (byte) (punteroFinal.getValor() - 1) );
+            punteroFinal.setValor( (int) (punteroFinal.getValor() - 1) );
             this.data[punteroFinal.getValor()] = val;
         }else if (data[0] == 0){
             this.data[0] = val;
@@ -39,7 +39,7 @@ public class Pila {
             this.data[punteroFinal.getValor()]=0;
         }else if(this.data[punteroFinal.getValor()] != 0 && this.data[punteroFinal.getValor() +1 ] != 0){
             this.data[punteroFinal.getValor()]=0;
-            punteroFinal.setValor((byte)(punteroFinal.getValor()-1));
+            punteroFinal.setValor((int)(punteroFinal.getValor()-1));
         }
     }
 
@@ -51,11 +51,11 @@ public class Pila {
         this.capacidadPila = capacidadPila;
     }
 
-    public byte[] getData() {
+    public int[] getData() {
         return data;
     }
 
-    public void setData(byte[] data) {
+    public void setData(int[] data) {
         this.data = data;
     }
 

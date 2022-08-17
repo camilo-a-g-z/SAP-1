@@ -4,14 +4,14 @@ import interfaces.IRegistro;
 
 public class Registro8Bit implements IRegistro {
 
-    private byte valor;
+    private int valor;
 
     public Registro8Bit() {
         this.valor = 0;
     }
 
     @Override
-    public void setValor(byte v) {
+    public void setValor(int v) {
         // Asegúrese de que la entrada sea de 4 bits
         if (v > 0b11111111) {
             throw new RuntimeException();
@@ -20,7 +20,7 @@ public class Registro8Bit implements IRegistro {
     }
 
     @Override
-    public byte getValor() {
+    public int getValor() {
         return this.valor;
     }
 

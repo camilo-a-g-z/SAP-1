@@ -7,19 +7,19 @@ import interfaces.IRegistro;
  * @author User
  */
 public class RegistroPunteroF implements IRegistro{
-    private byte valor;
+    private int valor;
 
     public RegistroPunteroF() {
         this.valor = 0;
     }
     
     @Override
-    public void setValor(byte v) {
+    public void setValor(int v) {
         this.valor = v;
     }
 
     @Override
-    public byte getValor() {
+    public int getValor() {
         return this.valor;
     }
 
