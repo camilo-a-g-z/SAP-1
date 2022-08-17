@@ -58,7 +58,7 @@ public class VistaPanelCPU extends JPanel{
         // Add the RAM View Widget
         c.gridx = 0;
         c.gridy = 0;
-        this.add(ramWidget, c);
+        this.add(ramWidget.getScrollPanel(), c);
 
         // Display the status of the clock
         lblEstadoReloj = new JLabel("Reloj: " + (logica.Clock.getClock().getEstado() ? "ALTO" : "BAJO"));
